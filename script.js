@@ -1,6 +1,6 @@
 /* ==========================================================================
    Harjas 1st Year Anniversary JavaScript Engine
-   Expanded Memory Sections & Interactive Flip Engines
+   Formal & Elegant Phrasing Edition
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const enterAppBtn = document.getElementById('enterAppBtn');
 
     const loadingNotes = [
-        "Loading 1 Year of Memories with Harjas... ✨",
+        "Celebrating One Year Together with Harjas... ✨",
         "14th August 2025 ➔ 14th August 2026 ❤️",
         "By God's grace, 365 days of love & laughter... 🕊️",
         "Connecting Discord DMs & Voice Calls... 🎧",
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (loadingBarFill) loadingBarFill.style.width = '100%';
             if (loadingPercent) loadingPercent.textContent = '100%';
-            if (loadingNoteText) loadingNoteText.textContent = '"Welcome to Our 1 Year Anniversary Sanctuary! ❤️"';
+            if (loadingNoteText) loadingNoteText.textContent = '"Welcome to Our One Year Together Sanctuary! ❤️"';
 
             if (enterAppBtn) {
                 enterAppBtn.classList.add('visible');
@@ -551,8 +551,8 @@ document.addEventListener('DOMContentLoaded', () => {
             img: "./assets/pfp_sunset.jpg"
         },
         {
-            title: "1 Year Anniversary 🎉",
-            desc: "Today I celebrate 1 year of love, patience, and growth with Harjas by God's grace. Happy 1st Anniversary Harjas! ❤️",
+            title: "Celebrating One Year Together 🕊️",
+            desc: "Today I celebrate one full year of love, patience, and growth with Harjas by God's grace. Happy Anniversary Harjas! ❤️",
             date: "14 Aug 2026",
             img: "./assets/pfp_sunset.jpg"
         }
