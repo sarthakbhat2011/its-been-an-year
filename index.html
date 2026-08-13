@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>1 Year Together with Harjas ❤️ | Anniversary Gift</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="discord-theme">
+    
+    <!-- INITIAL LOADING SCREEN (Before Homepage) -->
+    <div id="loadingScreen" class="loading-overlay">
+        <div class="loading-content card-3d">
+            <div class="loading-avatars-row">
+                <div class="loading-avatar-box">
+                    <img src="./assets/pfp_toothless.png" alt="Harjas Toothless PFP" class="loading-pfp pfp-enhanced">
+                    <span class="pfp-label"><i class="fa-brands fa-discord"></i> Harjas</span>
+                </div>
+                <div class="loading-heart">
+                    <i class="fa-solid fa-heart pulsing-heart"></i>
+                </div>
+                <div class="loading-avatar-box">
+                    <img src="./assets/pfp_kuromi.png" alt="Harjas Kuromi PFP" class="loading-pfp pfp-enhanced">
+                    <span class="pfp-label"><i class="fa-brands fa-instagram"></i> Harjas</span>
+                </div>
+            </div>
+
+            <h2 class="loading-title">For Harjas ❤️</h2>
+            
+            <!-- Dynamic Rotating Notes -->
+            <div class="loading-notes-box">
+                <p id="loadingNoteText">"Loading 1 Year of Memories with Harjas..."</p>
+            </div>
+
+            <!-- Loading Progress Bar -->
+            <div class="loading-bar-wrapper">
+                <div class="loading-bar-fill" id="loadingBarFill"></div>
+            </div>
+            <div class="loading-percent" id="loadingPercent">0%</div>
+
+            <!-- Enter Button (Appears when 100%) -->
+            <button class="enter-app-btn" id="enterAppBtn">Enter Our Sanctuary ✨</button>
+        </div>
+    </div>
+
+    <!-- UI LOVE MELT OVERLAY (When YES is clicked) -->
+    <div id="loveMeltOverlay" class="love-melt-overlay">
+        <div class="melt-hearts-container" id="meltHeartsContainer"></div>
+        <div class="melt-banner">
+            <h1>SHE SAID YES! 💖</h1>
+            <p>UI Melting in Pure Love... Here's to a few more years with Harjas! 🥂✨</p>
+        </div>
+    </div>
+
+    <!-- 3D Particle Canvas for Floating Stars & Hearts -->
+    <canvas id="bgCanvas"></canvas>
+    
+    <!-- 3D Balloon Canvas for Midnight Celebration & YES Celebration -->
+    <canvas id="balloonCanvas"></canvas>
+
+    <!-- Main Mobile & Desktop App Layout Container -->
+    <div class="app-container" id="mainAppContainer">
+        
+        <!-- Sweet Vertical Memory Timeline Quick-Dock -->
+        <nav class="guild-sidebar sweet-timeline-bar" id="guildSidebar" aria-label="Memory Timeline Sidebar">
+            <a href="#hero-section" class="timeline-node active" title="1st Anniversary Sanctuary">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <div class="node-tooltip">1st Anniversary Sanctuary</div>
+            </a>
+            <div class="sidebar-divider"></div>
+            <a href="#memory-pocso" class="timeline-node" title="14 Aug 2025 — The Day We Met">
+                <i class="fa-solid fa-calendar-day"></i>
+                <div class="node-tooltip">14 Aug 2025 — Day We Met</div>
+            </a>
+            <a href="#memory-dms" class="timeline-node" title="Late Night Voice Calls & DMs">
+                <i class="fa-solid fa-headset"></i>
+                <div class="node-tooltip">Late Night VCs & DMs</div>
+            </a>
+            <a href="#habits-section" class="timeline-node" title="Our Shared Habits & Quirks">
+                <i class="fa-solid fa-mug-hot"></i>
+                <div class="node-tooltip">Shared Habits & Quirks</div>
+            </a>
+            <a href="#reasons-section" class="timeline-node" title="Little Reasons Why I Care">
+                <i class="fa-solid fa-envelope"></i>
+                <div class="node-tooltip">Little Reasons Why I Care</div>
+            </a>
+            <a href="#question-section" class="timeline-node proposal-node" title="A Few More Years?">
+                <i class="fa-solid fa-sparkles"></i>
+                <div class="node-tooltip">A Few More Years?</div>
+            </a>
+            <a href="#sticky-notes-wall" class="timeline-node" title="Memory Sticky Notes">
+                <i class="fa-solid fa-note-sticky"></i>
+                <div class="node-tooltip">Memory Sticky Notes</div>
+            </a>
+            <a href="#promise-section" class="timeline-node" title="My Letter for Harjas">
+                <i class="fa-solid fa-envelope-open-text"></i>
+                <div class="node-tooltip">Letter for Harjas</div>
+            </a>
+            <div class="sidebar-divider"></div>
+            <div class="timeline-node music-node" id="musicToggleBtn" title="Toggle Soft Ambient Vibe">
+                <i class="fa-solid fa-music"></i>
+                <div class="node-tooltip">Toggle Ambient Music</div>
+            </div>
+        </nav>
+
+        <!-- Channels Sidebar Drawer Backdrop Overlay for Mobile -->
+        <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+        <!-- Channels Sidebar Drawer -->
+        <aside class="channels-sidebar" id="channelsSidebar">
+            <div class="sidebar-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search my memories for Harjas...</span>
+                </div>
+                <button class="close-sidebar-btn" id="closeSidebarBtn">&times;</button>
+            </div>
+
+            <div class="dm-section-title">
+                <span>MY GIFT TO HARJAS</span>
+                <i class="fa-solid fa-plus"></i>
+            </div>
+
+            <!-- Sunset Memory Badge 1 -->
+            <div class="dm-user-item active tilt-element">
+                <div class="avatar-wrapper">
+                    <img src="./assets/pfp_sunset.jpg" alt="Sunset PFP" class="avatar-img pfp-enhanced">
+                    <span class="status-indicator online"></span>
+                </div>
+                <div class="user-details">
+                    <div class="user-name">
+                        <span>My 1 Year with Harjas</span>
+                        <i class="fa-solid fa-heart heart-badge"></i>
+                    </div>
+                    <div class="user-status-text">Connected since 14 Aug 2025 ❤️</div>
+                </div>
+            </div>
+
+            <!-- Sunset Memory Badge 2 -->
+            <div class="dm-user-item tilt-element">
+                <div class="avatar-wrapper">
+                    <img src="./assets/pfp_sunset.jpg" alt="Sunset PFP" class="avatar-img pfp-enhanced">
+                    <span class="status-indicator online"></span>
+                </div>
+                <div class="user-details">
+                    <div class="user-name">
+                        <span>For Harjas Always</span>
+                        <i class="fa-solid fa-sparkles heart-badge"></i>
+                    </div>
+                    <div class="user-status-text">By God's Grace ✨</div>
+                </div>
+            </div>
+
+            <div class="channels-divider"></div>
+
+            <div class="dm-section-title">
+                <span>MEMORY CHANNELS</span>
+            </div>
+            <div class="channel-list">
+                <a href="#hero-section" class="channel-item active" data-tab="hero"><i class="fa-solid fa-hashtag"></i> 1st-anniversary</a>
+                <a href="#question-section" class="channel-item" data-tab="question"><i class="fa-solid fa-heart"></i> stay-for-few-more-years</a>
+                <a href="#memory-pocso" class="channel-item" data-tab="pocso"><i class="fa-solid fa-hashtag"></i> how-we-met</a>
+                <a href="#memory-dms" class="channel-item" data-tab="dms"><i class="fa-solid fa-hashtag"></i> discord-dms-and-vc</a>
+                <a href="#habits-section" class="channel-item" data-tab="habits"><i class="fa-solid fa-hashtag"></i> shared-habits</a>
+                <a href="#reasons-section" class="channel-item" data-tab="reasons"><i class="fa-solid fa-hashtag"></i> little-reasons</a>
+                <a href="#journal-section" class="channel-item" data-tab="journal"><i class="fa-solid fa-hashtag"></i> 1-year-journal</a>
+                <a href="#sticky-notes-wall" class="channel-item" data-tab="stickynotes"><i class="fa-solid fa-hashtag"></i> mini-sticky-notes</a>
+                <a href="#promise-section" class="channel-item" data-tab="promise"><i class="fa-solid fa-hashtag"></i> future-promise</a>
+            </div>
+
+            <!-- Voice Call Widget -->
+            <div class="vc-widget tilt-element">
+                <div class="vc-header">
+                    <i class="fa-solid fa-wifi vc-signal"></i>
+                    <span>Voice Connected / 24/7</span>
+                </div>
+                <div class="vc-channel-name">My Late Night VCs with Harjas</div>
+                <div class="vc-actions">
+                    <button class="vc-btn" id="vcMuteBtn" title="Mute/Unmute"><i class="fa-solid fa-microphone"></i></button>
+                    <button class="vc-btn" id="vcDeafenBtn" title="Deafen"><i class="fa-solid fa-headphones"></i></button>
+                    <button class="vc-btn disconnect" title="Never disconnect!"><i class="fa-solid fa-phone-slash"></i></button>
+                </div>
+            </div>
+
+            <!-- User Footer Profile Bar -->
+            <div class="sidebar-user-footer">
+                <div class="avatar-wrapper small">
+                    <img src="./assets/pfp_sunset.jpg" alt="PFP" class="avatar-img pfp-enhanced">
+                    <span class="status-indicator online"></span>
+                </div>
+                <div class="footer-user-info">
+                    <div class="username">My Dedicated Gift to Harjas</div>
+                    <div class="tag">#14082025</div>
+                </div>
+                <div class="footer-controls">
+                    <i class="fa-solid fa-gear" title="Settings"></i>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="chat-window">
+            
+            <!-- Top Header Bar -->
+            <header class="chat-header">
+                <div class="header-left">
+                    <div class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                    <div class="header-avatar">
+                        <img src="./assets/pfp_sunset.jpg" alt="Header PFP" class="pfp-enhanced">
+                        <span class="status-indicator online"></span>
+                    </div>
+                    <div class="header-info">
+                        <span class="header-username">My Gift for Harjas ❤️</span>
+                        <span class="header-separator">|</span>
+                        <span class="header-custom-status"><i class="fa-solid fa-crown glow-icon"></i> 1 Year Anniversary (14 Aug 2025 - 14 Aug 2026)</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button class="celebrate-trigger-btn" id="triggerMidnightBtn" title="12:00 AM Midnight Celebration Balloons!">
+                        <i class="fa-solid fa-cake-candles"></i> <span>12:00 AM Event</span>
+                    </button>
+                    <a href="https://discord.com" target="_blank" class="platform-badge discord-badge" title="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="https://instagram.com" target="_blank" class="platform-badge insta-badge" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </header>
+
+            <!-- Scrollable Main Chat & Memory View -->
+            <div class="chat-messages-container" id="chatContainer">
+                
+                <!-- Instagram Story Reels Bar -->
+                <section class="insta-stories-bar">
+                    <div class="story-item" data-story="1">
+                        <div class="story-ring gradient-ring">
+                            <img src="./assets/pfp_sunset.jpg" alt="Sunset PFP" class="story-img pfp-enhanced">
+                        </div>
+                        <span class="story-label">Day We Met</span>
+                    </div>
+                    <div class="story-item" data-story="2">
+                        <div class="story-ring gradient-ring">
+                            <img src="./assets/pfp_sunset.jpg" alt="Sunset PFP" class="story-img pfp-enhanced">
+                        </div>
+                        <span class="story-label">First DMs</span>
+                    </div>
+                    <div class="story-item" data-story="3">
+                        <div class="story-ring gradient-ring">
+                            <i class="fa-solid fa-headset story-icon"></i>
+                        </div>
+                        <span class="story-label">Night VCs</span>
+                    </div>
+                    <div class="story-item" data-story="4">
+                        <div class="story-ring gradient-ring">
+                            <i class="fa-solid fa-heart story-icon"></i>
+                        </div>
+                        <span class="story-label">Ups & Downs</span>
+                    </div>
+                    <div class="story-item" data-story="5">
+                        <div class="story-ring gradient-ring active-story">
+                            <img src="./assets/pfp_sunset.jpg" alt="Sunset PFP" class="story-img pfp-enhanced">
+                        </div>
+                        <span class="story-label">1 Year 🎉</span>
+                    </div>
+                </section>
+
+                <!-- MIDNIGHT COUNTDOWN BANNER -->
+                <section class="midnight-banner-card tilt-element" id="midnightCard">
+                    <div class="midnight-badge"><i class="fa-solid fa-clock glow-icon"></i> COUNTDOWN TO MIDNIGHT 12:00 AM (14 AUG 2026)</div>
+                    <h2 class="midnight-title">The Magic Moment Awaits... ✨</h2>
+                    <div class="midnight-timer-row">
+                        <div class="timer-box"><span id="mHours">00</span><label>HOURS</label></div>
+                        <div class="timer-colon">:</div>
+                        <div class="timer-box"><span id="mMins">00</span><label>MINS</label></div>
+                        <div class="timer-colon">:</div>
+                        <div class="timer-box"><span id="mSecs">00</span><label>SECS</label></div>
+                    </div>
+                    <p class="midnight-sub">At 12:00 AM, the screen transforms into a celebration of love balloons & fireworks! 🎈🎆</p>
+                </section>
+
+                <!-- Hero Showcase -->
+                <section class="hero-card tilt-element" id="hero-section">
+                    <div class="hero-bg-overlay"></div>
+
+                    <h1 class="hero-title 3d-text">Happy 1st Anniversary, Harjas! ✨</h1>
+                    <p class="hero-subtitle">Started on <strong>14th August 2025</strong> &bull; Going strong by God's grace 🕊️</p>
+                    
+                    <!-- Real-Time Counter Box -->
+                    <div class="anniversary-counter-box card-3d">
+                        <div class="counter-unit">
+                            <span class="counter-val" id="daysVal">365</span>
+                            <span class="counter-lbl">DAYS</span>
+                        </div>
+                        <div class="counter-colon">:</div>
+                        <div class="counter-unit">
+                            <span class="counter-val" id="hoursVal">00</span>
+                            <span class="counter-lbl">HOURS</span>
+                        </div>
+                        <div class="counter-colon">:</div>
+                        <div class="counter-unit">
+                            <span class="counter-val" id="minsVal">00</span>
+                            <span class="counter-lbl">MINS</span>
+                        </div>
+                        <div class="counter-colon">:</div>
+                        <div class="counter-unit">
+                            <span class="counter-val" id="secsVal">00</span>
+                            <span class="counter-lbl">SECS</span>
+                        </div>
+                    </div>
+
+                    <!-- Hero CTA Button: "Let's go on for few years more" -->
+                    <div class="hero-cta-wrapper">
+                        <button class="lets-go-btn glow-pulse" id="letsGoBtn">
+                            <span class="btn-sparkle">✨</span>
+                            <span class="btn-text">Let's go on for few years more</span>
+                            <i class="fa-solid fa-arrow-right btn-icon"></i>
+                        </button>
+                        <p class="cta-hint">Tap above for my anniversary letter & heart explosion ❤️</p>
+                    </div>
+                </section>
+
+                <!-- INTERACTIVE PROPOSAL CARD: "Stay Together for Few More Years?" -->
+                <section class="question-card tilt-element" id="question-section">
+                    <div class="question-header">
+                        <i class="fa-solid fa-heart-circle-check question-icon"></i>
+                        <h2>Harjas, will you stay with me for a few more years? 💖</h2>
+                        <p>Choose your answer below... (Choose wisely! 😉)</p>
+                    </div>
+
+                    <div class="question-buttons-row" id="questionBtnArea">
+                        <button class="yes-btn glow-pulse" id="yesBtn">
+                            <span class="btn-emoji">💖</span> YES! FOR A FEW MORE YEARS! <span class="btn-emoji">✨</span>
+                        </button>
+                        
+                        <!-- RUNAWAY "NO" BUTTON -->
+                        <button class="no-btn" id="noBtn">
+                            <span>No... 😢</span>
+                        </button>
+                    </div>
+                </section>
+
+                <div class="chat-date-divider">
+                    <span>AUGUST 14, 2025 &bull; THE BEGINNING</span>
+                </div>
+
+                <!-- Memory Entry 1 -->
+                <article class="discord-message tilt-element" id="memory-pocso">
+                    <div class="msg-avatar">
+                        <img src="./assets/pfp_sunset.jpg" alt="Sunset PFP" class="pfp-enhanced">
+                    </div>
+                    <div class="msg-content">
+                        <div class="msg-author-row">
+                            <span class="msg-timestamp"><i class="fa-solid fa-heart"></i> 14/08/2025</span>
+                        </div>
+                        <div class="msg-body">
+                            "I am so glad we connected during that group discussion on the POCSO Act today! Exchanging Discord IDs with you opened a whole new world for me. ✨"
+                        </div>
+
+                        <!-- 3D Glassmorphism Embed Card -->
+                        <div class="discord-embed pocso-embed card-3d">
+                            <div class="embed-border"></div>
+                            <div class="embed-inner">
+                                <div class="embed-author">
+                                    <i class="fa-solid fa-sparkles"></i> Memory #01: The First Spark
+                                </div>
+                                <h3 class="embed-title">The Day We Met</h3>
+                                <p class="embed-desc">
+                                    On August 14, 2025, two minds connected during an academic discussion. 
+                                    Taking that step to exchange Discord IDs with Harjas opened the doorway to an unforgettable year of laughter, care, and togetherness.
+                                </p>
+                                <div class="embed-footer">
+                                    <span>Date: 14th Aug 2025</span> &bull; <span>Written with Love</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="msg-reactions">
+                            <div class="reaction-pill active" data-count="365">
+                                <span class="reaction-emoji">✨</span>
+                                <span class="reaction-count">365</span>
+                            </div>
+                            <div class="reaction-pill active" data-count="520">
+                                <span class="reaction-emoji">💖</span>
+                                <span class="reaction-count">520</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="chat-date-divider">
+                    <span>LATE NIGHT TALKS & VOICE CALLS</span>
+                </div>
+
+                <!-- Memory Entry 2 -->
+                <article class="discord-message tilt-element" id="memory-dms">
+                    <div class="msg-avatar">
+                        <img src="./assets/pfp_sunset.jpg" alt="Sunset PFP" class="pfp-enhanced">
+                    </div>
+                    <div class="msg-content">
+                        <div class="msg-author-row">
+                            <span class="msg-timestamp"><i class="fa-solid fa-moon"></i> Late Nights 2025-2026</span>
+                        </div>
+                        <div class="msg-body">
+                            "I loved every single late-night voice call with you. Asking if you're coming in VC, sharing stories, music, and falling asleep on call together. 🎙️"
+                        </div>
+
+                        <!-- Discord Voice Call Memory 3D Card -->
+                        <div class="discord-embed vc-embed card-3d">
+                            <div class="embed-border vc-border"></div>
+                            <div class="embed-inner">
+                                <div class="embed-author">
+                                    <i class="fa-brands fa-discord"></i> Memory #02: Our Discord Sanctuary
+                                </div>
+                                <h3 class="embed-title">Endless Voice Calls & DMs 🎧</h3>
+                                <p class="embed-desc">
+                                    Endless hours connected on voice calls with Harjas, sharing music, studying together, and sharing late-night thoughts. 
+                                    Every ping from her brought immense comfort and joy to my heart.
+                                </p>
+                                <div class="vc-stats-grid">
+                                    <div class="vc-stat"><span class="stat-num">10,000+</span><span class="stat-lbl">DMs Exchanged</span></div>
+                                    <div class="vc-stat"><span class="stat-num">∞</span><span class="stat-lbl">Inside Jokes</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="msg-reactions">
+                            <div class="reaction-pill active" data-count="1000">
+                                <span class="reaction-emoji">🎙️</span>
+                                <span class="reaction-count">1000</span>
+                            </div>
+                            <div class="reaction-pill active" data-count="999">
+                                <span class="reaction-emoji">🎶</span>
+                                <span class="reaction-count">999</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="chat-date-divider">
+                    <span>OUR LITTLE HABITS & DAILY MEMORIES</span>
+                </div>
+
+                <!-- Shared Habits & Quirks Grid -->
+                <section class="habits-section tilt-element" id="habits-section">
+                    <div class="section-heading">
+                        <h2><i class="fa-solid fa-mug-hot"></i> Our Shared Habits & Little Moments</h2>
+                        <p>The simple daily routines that made this 1 year feel so special ❤️</p>
+                    </div>
+
+                    <div class="habits-grid">
+                        <div class="habit-card card-3d">
+                            <div class="habit-icon"><i class="fa-solid fa-music"></i></div>
+                            <h3>Spotify Jams</h3>
+                            <p>Syncing playlists in Discord voice calls and recommending our favorite acoustic tracks.</p>
+                        </div>
+                        <div class="habit-card card-3d">
+                            <div class="habit-icon"><i class="fa-solid fa-book-open"></i></div>
+                            <h3>Muted Study VCs</h3>
+                            <p>Staying connected on call while studying, just enjoying each other's quiet presence.</p>
+                        </div>
+                        <div class="habit-card card-3d">
+                            <div class="habit-icon"><i class="fa-solid fa-moon"></i></div>
+                            <h3>Goodnight Pings</h3>
+                            <p>Sending sweet goodnight texts right before falling asleep, no matter how tired we were.</p>
+                        </div>
+                        <div class="habit-card card-3d">
+                            <div class="habit-icon"><i class="fa-solid fa-face-laugh-beam"></i></div>
+                            <h3>Inside Jokes</h3>
+                            <p>Laughing at silly memes and references that only the two of us truly understand.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="chat-date-divider">
+                    <span>REASONS WHY I CARE FOR HARJAS</span>
+                </div>
+
+                <!-- Interactive Envelope Reveal Cards -->
+                <section class="reasons-section tilt-element" id="reasons-section">
+                    <div class="section-heading">
+                        <h2><i class="fa-solid fa-envelope"></i> Little Reasons Why I Care (Tap to Open)</h2>
+                        <p>Tap each cute envelope note below to unlock a sweet memory!</p>
+                    </div>
+
+                    <div class="reasons-grid">
+                        <div class="reason-card" data-reason="1">
+                            <div class="reason-front">
+                                <i class="fa-solid fa-envelope-heart"></i>
+                                <span>Envelope #1</span>
+                                <small>Tap to open ✨</small>
+                            </div>
+                            <div class="reason-back">
+                                <p>"Because she listens patiently with so much warmth, even when I ramble about simple things."</p>
+                            </div>
+                        </div>
+
+                        <div class="reason-card" data-reason="2">
+                            <div class="reason-front">
+                                <i class="fa-solid fa-envelope-heart"></i>
+                                <span>Envelope #2</span>
+                                <small>Tap to open ✨</small>
+                            </div>
+                            <div class="reason-back">
+                                <p>"Because her presence in voice call instantly turns any stressful day into a calm & peaceful night."</p>
+                            </div>
+                        </div>
+
+                        <div class="reason-card" data-reason="3">
+                            <div class="reason-front">
+                                <i class="fa-solid fa-envelope-heart"></i>
+                                <span>Envelope #3</span>
+                                <small>Tap to open ✨</small>
+                            </div>
+                            <div class="reason-back">
+                                <p>"Because we can sit in total comfortable silence together, and it still feels completely special."</p>
+                            </div>
+                        </div>
+
+                        <div class="reason-card" data-reason="4">
+                            <div class="reason-front">
+                                <i class="fa-solid fa-envelope-heart"></i>
+                                <span>Envelope #4</span>
+                                <small>Tap to open ✨</small>
+                            </div>
+                            <div class="reason-back">
+                                <p>"Because through all the subtle ups and downs, she remained genuine, grounded, and kind."</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="chat-date-divider">
+                    <span>OUR 1-YEAR SEASONAL JOURNAL</span>
+                </div>
+
+                <!-- 4-Season 3D Flip Journal Cards -->
+                <section class="journal-section tilt-element" id="journal-section">
+                    <div class="section-heading">
+                        <h2><i class="fa-solid fa-book-bookmark"></i> Our 1-Year Seasonal Journal</h2>
+                        <p>Hover or tap each season to flip through our year together 📖</p>
+                    </div>
+
+                    <div class="journal-grid">
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front journal-autumn">
+                                    <div class="season-badge">AUTUMN 2025</div>
+                                    <h3>The First Month 🍂</h3>
+                                    <p>First DMs & learning about each other</p>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>August – October 2025</h4>
+                                    <p>Connecting on Discord right after the POCSO discussion. Initial awkwardness turning into long late-night chats!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front journal-winter">
+                                    <div class="season-badge">WINTER 2025</div>
+                                    <h3>Voice Call Nights ❄️</h3>
+                                    <p>Cozy winter calls & music sync</p>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>November – January 2025</h4>
+                                    <p>Cold winter nights warmed by hours of voice calls, sharing playlists, and falling asleep on Discord.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front journal-spring">
+                                    <div class="season-badge">SPRING 2026</div>
+                                    <h3>Growing Closer 🌸</h3>
+                                    <p>Support through busy routines</p>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>February – May 2026</h4>
+                                    <p>Navigating subtle ups and downs, keeping each other motivated during exam stress, and staying grounded.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front journal-summer">
+                                    <div class="season-badge">SUMMER 2026</div>
+                                    <h3>1 Year Celebration ☀️</h3>
+                                    <p>14th August 2026 Milestone!</p>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>June – August 2026</h4>
+                                    <p>Reaching 365 days by God's grace! A humble celebration dedicated with all my heart to Harjas. ❤️</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="chat-date-divider">
+                    <span>THROUGH EVERY CHAPTER &bull; STRENGTH & GRACE</span>
+                </div>
+
+                <!-- Memory Entry 3 -->
+                <article class="discord-message tilt-element" id="memory-upsdowns">
+                    <div class="msg-avatar">
+                        <img src="./assets/pfp_sunset.jpg" alt="Sunset PFP" class="pfp-enhanced">
+                    </div>
+                    <div class="msg-content">
+                        <div class="msg-author-row">
+                            <span class="msg-timestamp"><i class="fa-solid fa-hands-holding"></i> Reflections on 1 Year</span>
+                        </div>
+                        <div class="msg-body">
+                            "Looking back, we had our <strong>subtle ups and downs</strong>, but I am so proud that <em>we never let each other down</em>. 🤝❤️"
+                        </div>
+
+                        <!-- 3D Card for Ups & Downs -->
+                        <div class="discord-embed faith-embed card-3d">
+                            <div class="embed-border faith-border"></div>
+                            <div class="embed-inner">
+                                <div class="embed-author">
+                                    <i class="fa-solid fa-hands-holding-child"></i> Memory #03: By God's Grace
+                                </div>
+                                <h3 class="embed-title">Humble, Grounded & Stronger Together 🕊️</h3>
+                                <p class="embed-desc">
+                                    Through life's subtle ups and downs, my patience and care for Harjas remained steadfast. 
+                                    By God's grace, every challenge made our bond stronger and brought us even closer.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="msg-reactions">
+                            <div class="reaction-pill active" data-count="1000">
+                                <span class="reaction-emoji">🤝</span>
+                                <span class="reaction-count">1000</span>
+                            </div>
+                            <div class="reaction-pill active" data-count="2026">
+                                <span class="reaction-emoji">🕊️</span>
+                                <span class="reaction-count">2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="chat-date-divider">
+                    <span>MINI MEMORY NOTES WALL</span>
+                </div>
+
+                <!-- Interactive 3D Mini Sticky Notes Grid -->
+                <section class="sticky-notes-section" id="sticky-notes-wall">
+                    <div class="section-heading">
+                        <h2><i class="fa-solid fa-note-sticky"></i> My Memory Notes for Harjas</h2>
+                        <p>Hover or tap on these notes to experience 3D depth & memories!</p>
+                    </div>
+
+                    <div class="sticky-notes-grid">
+                        <div class="sticky-note note-blurple tilt-element">
+                            <div class="note-pin">📌</div>
+                            <div class="note-tag">14.08.2025</div>
+                            <p class="note-text">"First met on 14th August 2025. Exchanged Discord IDs and started our journey! ⚖️💬"</p>
+                        </div>
+                        <div class="sticky-note note-pink tilt-element">
+                            <div class="note-pin">📌</div>
+                            <div class="note-tag">Golden Sunset</div>
+                            <p class="note-text">"A special 1-year gift crafted with all my heart for Harjas ❤️"</p>
+                        </div>
+                        <div class="sticky-note note-green tilt-element">
+                            <div class="note-pin">📌</div>
+                            <div class="note-tag">Unbreakable Rule</div>
+                            <p class="note-text">"Subtle ups and downs happened, but we NEVER let one down. 🤝"</p>
+                        </div>
+                        <div class="sticky-note note-yellow tilt-element">
+                            <div class="note-pin">📌</div>
+                            <div class="note-tag">Late Night VC</div>
+                            <p class="note-text">"Falling asleep on Discord voice call while listening to music together. 🎧😴"</p>
+                        </div>
+                        <div class="sticky-note note-purple tilt-element">
+                            <div class="note-pin">📌</div>
+                            <div class="note-tag">God's Grace</div>
+                            <p class="note-text">"Grateful to God every single day for bringing Harjas into my life. 🕊️"</p>
+                        </div>
+                        <div class="sticky-note note-red tilt-element">
+                            <div class="note-pin">📌</div>
+                            <div class="note-tag">The Promise</div>
+                            <p class="note-text">"Let's go on for a few years more! ✨"</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="chat-date-divider">
+                    <span>FUTURE CHAPTERS & SECRET LETTER</span>
+                </div>
+
+                <!-- 3D Promise Section -->
+                <section class="promise-card tilt-element" id="promise-section">
+                    <div class="promise-sparkles">✨ 💖 ✨</div>
+                    <h2 class="promise-title">To Harjas, My Dearest...</h2>
+                    <div class="promise-letter">
+                        <p>
+                            Harjas, reaching 1 year with you feels so natural yet so deeply special. 
+                            From that day we first met to sharing late-night laughs on Discord and Instagram, 
+                            you've become my safest place and my favorite notification.
+                        </p>
+                        <p>
+                            We aren't perfect, and we've had our subtle ups and downs, but looking back, I admire how we always held hands 
+                            and made sure neither of us felt alone. Thank you for being so patient, so kind, and so genuinely you.
+                        </p>
+                        <p class="highlight-quote">
+                            "Let's go on for a few years more!" ❤️
+                        </p>
+                        <div class="letter-signature">
+                            <span>With all my love & care,</span>
+                            <br>
+                            <strong>Always Yours</strong>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Mobile Dock / Bottom Navigation Bar -->
+            <nav class="mobile-bottom-bar" aria-label="Mobile Navigation">
+                <a href="#hero-section" class="mobile-nav-item active"><i class="fa-solid fa-house"></i><span>Home</span></a>
+                <a href="#question-section" class="mobile-nav-item"><i class="fa-solid fa-heart"></i><span>Choose</span></a>
+                <a href="#habits-section" class="mobile-nav-item"><i class="fa-solid fa-mug-hot"></i><span>Moments</span></a>
+                <a href="#sticky-notes-wall" class="mobile-nav-item"><i class="fa-solid fa-note-sticky"></i><span>Memories</span></a>
+                <a href="#promise-section" class="mobile-nav-item"><i class="fa-solid fa-envelope-open-text"></i><span>Letter</span></a>
+            </nav>
+
+            <!-- Discord Chat Input Bar with Quick Cute Reaction Strip -->
+            <footer class="chat-input-area">
+                <div class="quick-emoji-strip" id="quickEmojiStrip">
+                    <span class="quick-emoji-tag">Quick Love Notes:</span>
+                    <button class="quick-emoji-btn" data-text="Sending all my love to Harjas today! 💖">💖 Love</button>
+                    <button class="quick-emoji-btn" data-text="Grateful for every single day with you! ✨">✨ Grace</button>
+                    <button class="quick-emoji-btn" data-text="Best Discord VC partner ever! 🎧">🎧 VCs</button>
+                    <button class="quick-emoji-btn" data-text="Let's go on for a few years more! 🥂">🥂 Cheers</button>
+                </div>
+                <div class="chat-input-wrapper">
+                    <button class="input-btn upload-btn" title="Add Memory Attachment"><i class="fa-solid fa-circle-plus"></i></button>
+                    <input type="text" id="customMsgInput" placeholder="Add a personal note for Harjas... (type a sweet message & press Enter!)">
+                    <div class="input-actions">
+                        <button class="input-btn" title="Gift Nitro"><i class="fa-solid fa-gift"></i></button>
+                        <button class="input-btn" title="GIF"><i class="fa-solid fa-file-video"></i></button>
+                        <button class="input-btn emoji-btn" id="emojiPopBtn" title="Select Emoji"><i class="fa-solid fa-face-smile"></i></button>
+                        <button class="send-btn" id="sendMsgBtn" title="Send Message"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- Interactive Story Viewer Modal -->
+    <div class="story-modal" id="storyModal">
+        <div class="story-modal-overlay"></div>
+        <div class="story-modal-content card-3d">
+            <div class="story-progress-bar">
+                <div class="story-progress-fill" id="storyProgressFill"></div>
+            </div>
+            <div class="story-modal-header">
+                <img src="./assets/pfp_sunset.jpg" alt="Sunset PFP" class="story-avatar pfp-enhanced" id="storyAvatarImg">
+                <div class="story-user">
+                    <span class="story-username">My Gift for Harjas ❤️</span>
+                    <span class="story-time" id="storyTimeText">14 Aug 2025</span>
+                </div>
+                <button class="story-close-btn" id="storyCloseBtn">&times;</button>
+            </div>
+            <div class="story-body" id="storyBodyContent">
+                <div class="story-slide-text">
+                    <h2 id="storySlideTitle">The Day We Met</h2>
+                    <p id="storySlideDesc">Where two minds met on 14th August 2025 and exchanged Discord handles! ⚖️💬</p>
+                </div>
+            </div>
+            <div class="story-footer">
+                <div class="story-like-btn" id="storyLikeBtn"><i class="fa-solid fa-heart"></i></div>
+                <input type="text" class="story-reply-input" placeholder="Add a heart to this memory...">
+            </div>
+        </div>
+    </div>
+
+    <!-- Midnight Fullscreen Celebration Modal -->
+    <div class="midnight-modal" id="midnightModal">
+        <div class="midnight-modal-content">
+            <div class="celebration-balloons-bg"></div>
+            <div class="celebration-title">🎉 HAPPY 1ST ANNIVERSARY HARJAS! 💖</div>
+            <p class="celebration-sub">It's 12:00 AM! By God's grace, 1 full year together! Here's to a few more years!</p>
+            <div class="celebration-balloons-row">
+                <span class="b-balloon">🎈</span>
+                <span class="b-balloon">🎈</span>
+                <span class="b-balloon">💖</span>
+                <span class="b-balloon">🎈</span>
+                <span class="b-balloon">✨</span>
+            </div>
+            <button class="close-midnight-btn" id="closeMidnightBtn">Continue Celebrating ✨</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
