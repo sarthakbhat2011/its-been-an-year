@@ -1,6 +1,6 @@
 /* ==========================================================================
    Harjas 1st Year Anniversary JavaScript Engine
-   Formal & Elegant Phrasing Edition
+   Permanent Functionality Edition — Always Interactive Irrespective of Date/Time
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ----------------------------------------------------------------------
-    // 0.5. RUNAWAY "NO" BUTTON & "YES" UI LOVE MELT ENGINE
+    // 0.5. RUNAWAY "NO" BUTTON & "YES" UI LOVE MELT ENGINE (Always Active)
     // ----------------------------------------------------------------------
     const noBtn = document.getElementById('noBtn');
     const yesBtn = document.getElementById('yesBtn');
@@ -222,56 +222,56 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ----------------------------------------------------------------------
-    // 1. Live 1-Year Counter (August 14, 2025 to Present)
+    // 1. Live 1-Year Counter (August 14, 2025 to Present & Always Live)
     // ----------------------------------------------------------------------
     const startDate = new Date('2025-08-14T00:00:00');
 
     function updateCounter() {
         const now = new Date();
-        const diffMs = now - startDate;
+        const diffMs = Math.max(0, now - startDate);
 
-        if (diffMs > 0) {
-            const totalSeconds = Math.floor(diffMs / 1000);
-            const days = Math.floor(totalSeconds / (3600 * 24));
-            const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
-            const mins = Math.floor((totalSeconds % 3600) / 60);
-            const secs = Math.floor(totalSeconds % 60);
+        const totalSeconds = Math.floor(diffMs / 1000);
+        const days = Math.floor(totalSeconds / (3600 * 24));
+        const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+        const mins = Math.floor((totalSeconds % 3600) / 60);
+        const secs = Math.floor(totalSeconds % 60);
 
-            const daysEl = document.getElementById('daysVal');
-            const hoursEl = document.getElementById('hoursVal');
-            const minsEl = document.getElementById('minsVal');
-            const secsEl = document.getElementById('secsVal');
+        const daysEl = document.getElementById('daysVal');
+        const hoursEl = document.getElementById('hoursVal');
+        const minsEl = document.getElementById('minsVal');
+        const secsEl = document.getElementById('secsVal');
 
-            if (daysEl) daysEl.textContent = days;
-            if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
-            if (minsEl) minsEl.textContent = String(mins).padStart(2, '0');
-            if (secsEl) secsEl.textContent = String(secs).padStart(2, '0');
-        }
+        if (daysEl) daysEl.textContent = days;
+        if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+        if (minsEl) minsEl.textContent = String(mins).padStart(2, '0');
+        if (secsEl) secsEl.textContent = String(secs).padStart(2, '0');
     }
     updateCounter();
     setInterval(updateCounter, 1000);
 
     // ----------------------------------------------------------------------
-    // 2. Midnight 12:00 AM Event Countdown & Celebration
+    // 2. Midnight 12:00 AM Event Countdown (Always Triggerable & Functional)
     // ----------------------------------------------------------------------
     const midnightTarget = new Date('2026-08-14T00:00:00');
-    let celebrationTriggered = false;
 
     function updateMidnightTimer() {
         const now = new Date();
         const diffMs = midnightTarget - now;
 
-        if (diffMs <= 0 && !celebrationTriggered) {
-            triggerMidnightCelebration();
-        } else if (diffMs > 0) {
+        const mH = document.getElementById('mHours');
+        const mM = document.getElementById('mMins');
+        const mS = document.getElementById('mSecs');
+
+        if (diffMs <= 0) {
+            // Target time reached/passed: Display 00:00:00 but keep 100% interactive
+            if (mH) mH.textContent = '00';
+            if (mM) mM.textContent = '00';
+            if (mS) mS.textContent = '00';
+        } else {
             const totalSecs = Math.floor(diffMs / 1000);
             const hours = Math.floor(totalSecs / 3600);
             const mins = Math.floor((totalSecs % 3600) / 60);
             const secs = Math.floor(totalSecs % 60);
-
-            const mH = document.getElementById('mHours');
-            const mM = document.getElementById('mMins');
-            const mS = document.getElementById('mSecs');
 
             if (mH) mH.textContent = String(hours).padStart(2, '0');
             if (mM) mM.textContent = String(mins).padStart(2, '0');
@@ -297,9 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function triggerMidnightCelebration() {
-        celebrationTriggered = true;
         if (midnightModal) midnightModal.classList.add('active');
-
         startLoveBalloonsAnimation();
 
         if (typeof confetti === 'function') {
@@ -331,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ----------------------------------------------------------------------
-    // 3. 3D Love Balloons Canvas Animation
+    // 3. 3D Love Balloons Canvas Animation (Always Available)
     // ----------------------------------------------------------------------
     const balloonCanvas = document.getElementById('balloonCanvas');
     const bCtx = balloonCanvas.getContext('2d');
